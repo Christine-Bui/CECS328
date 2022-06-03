@@ -4,8 +4,15 @@ Partner: Matthew Eskridge
 Programming Assignment 1
 '''
 
-def bubbleSort():
-    pass
+def bubbleSort(data):
+    #pass
+    for i in range(0, len(data) - 1):
+        for j in range(len(data), i + 1, -1):
+            if data[j-1] < data[j - 2]:
+                placeholder = data[j - 1]
+                data[j - 1] = data[j - 2]
+                data[j - 2] = placeholder
+    return data
 
 def insertionSort(data):
     for i in range(1, len(data)):
@@ -17,7 +24,6 @@ def insertionSort(data):
             j -= 1
         data[j + 1] = temp
 
-
 def quickSort():
     pass
 
@@ -25,7 +31,6 @@ def quickSort():
 def mergeSort():
     pass
 
-
-arr = [2, 3, 4, 5, 6]
-insertionSort(arr)
-print(arr)
+data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
+print(bubbleSort(data))
+print(insertionSort(data))
