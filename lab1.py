@@ -3,7 +3,7 @@ Name: Christine Bui
 Partner: Matthew Eskridge
 Programming Assignment 1
 '''
-
+import math
 #from numpy import place
 
 
@@ -60,6 +60,14 @@ def mergeSort(data, l, r, m):
         L[i] = data[l + i - 1]
         for j in range(n2):
             R[i] = data[m + j]
+    return
+
+def merge(data, l, r):
+    if l < r:
+        m = math.floor((l + r) / 2) 
+        mergeSort(data, l, m)
+        mergeSort(data, m + 1, r)
+        merge(data, l, m, r)
 
 
 data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
