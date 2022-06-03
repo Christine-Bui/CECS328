@@ -4,7 +4,7 @@ Partner: Matthew Eskridge
 Programming Assignment 1
 '''
 
-from numpy import place
+#from numpy import place
 
 
 def bubbleSort(data):
@@ -51,8 +51,16 @@ def partition(data, s, e):
     return i + 1
 
 # EXTRA CREDIT
-def mergeSort():
-    pass
+def mergeSort(data, l, r, m):
+    n1 = m - l + 1
+    n2 = r - m
+    L = []
+    R = []
+    for i in range(1, n1):
+        L[i] = data[l + i - 1]
+        for j in range(n2):
+            R[i] = data[m + j]
+
 
 data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
 print(f"Bubble sort: {bubbleSort(data)}")
