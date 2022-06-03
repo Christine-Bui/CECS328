@@ -6,12 +6,12 @@ Programming Assignment 1
 
 def bubbleSort(data):
     #pass
-    for i in (1, len(data) - 1):
-        for j in (len(data), i + 1, -1):
-            if data[j] < data[j - 1]:
-                placeholder = data[j]
-                data[j] = data[j - 1]
-                data[j - 1] = placeholder
+    for i in range(0, len(data) - 1):
+        for j in range(len(data), i + 1, -1):
+            if data[j-1] < data[j - 2]:
+                placeholder = data[j - 1]
+                data[j - 1] = data[j - 2]
+                data[j - 2] = placeholder
     return data
 
 def insertionSort():
