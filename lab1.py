@@ -8,7 +8,7 @@ def bubbleSort(data):
     #pass
     for i in range(0, len(data) - 1):
         for j in range(len(data), i + 1, -1):
-            if data[j-1] < data[j - 2]:
+            if data[j-1] > data[j - 2]:
                 placeholder = data[j - 1]
                 data[j - 1] = data[j - 2]
                 data[j - 2] = placeholder
@@ -23,6 +23,7 @@ def insertionSort(data):
             data[j + 1] = data[j]
             j -= 1
         data[j + 1] = temp
+    return data
 
 def quickSort():
     pass
@@ -32,5 +33,5 @@ def mergeSort():
     pass
 
 data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
-print(bubbleSort(data))
-print(insertionSort(data))
+print(f"Bubble sort: {bubbleSort(data)}")
+print(f"Insertion sort: {insertionSort(data)}")
