@@ -4,6 +4,9 @@ Partner: Matthew Eskridge
 Programming Assignment 1
 '''
 
+from numpy import place
+
+
 def bubbleSort(data):
     #pass
     for i in range(0, len(data) - 1):
@@ -25,8 +28,27 @@ def insertionSort(data):
         data[j + 1] = temp
     return data
 
-def quickSort():
-    pass
+def quickSort(data, s, e):
+    #pass
+    if s > e:
+        part = partition(data, s, e)
+        quickSort(data, s, part - 1)
+        quickSort(data, part + 1, e)
+    return data
+
+def partition(data, s, e):
+    x = data[e]
+    i = s - 1
+    for j in range(s, e - 1):
+        if data[j] <= x:
+            i += 1
+            placeholder = data[i]
+            data[i] = data[j]
+            data[j] = placeholder
+    placeholder = data[i + 1]
+    data[i + 1] = data[e]
+    data[e] = placeholder
+    return i + 1
 
 # EXTRA CREDIT
 def mergeSort():
@@ -35,3 +57,4 @@ def mergeSort():
 data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
 print(f"Bubble sort: {bubbleSort(data)}")
 print(f"Insertion sort: {insertionSort(data)}")
+print(f"Quick sort: {quickSort(data, 1, len(data) - 1)}")
