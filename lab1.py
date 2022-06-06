@@ -3,7 +3,9 @@ Name: Christine Bui
 Partner: Matthew Eskridge
 Programming Assignment 1
 '''
+
 import math
+import timeit
 #from numpy import place
 
 
@@ -68,9 +70,28 @@ def merge(data, l, r):
         mergeSort(data, l, m)
         mergeSort(data, m + 1, r)
         merge(data, l, m, r)
+    return
+
 
 
 data = [4, 3, 6, 2, 7, 4, 12, 8, 9]
-print(f"Bubble sort: {bubbleSort(data)}")
+
+start = timeit.default_timer()
+print(f"\nBubble sort: {bubbleSort(data)}")
+stop = timeit.default_timer()
+print("Time:", stop - start, "\n")
+
+start = timeit.default_timer()
 print(f"Insertion sort: {insertionSort(data)}")
+stop = timeit.default_timer()
+print("Time:", stop - start, "\n")
+
+start = timeit.default_timer()
 print(f"Quick sort: {quickSort(data, 1, len(data) - 1)}")
+stop = timeit.default_timer()
+print("Time:", stop - start, "\n")
+
+#start = timeit.default_timer()
+#print(f"Merge sort: {mergeSort(data, 1, len(data) // 2, len(data) - 1)}")
+#stop = timeit.default_timer()
+#print("Time:", stop - start, "\n")
