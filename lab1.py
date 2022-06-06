@@ -6,6 +6,7 @@ Programming Assignment 1
 
 import math
 import timeit
+from xml.etree.ElementTree import QName
 #from numpy import place
 
 
@@ -62,7 +63,17 @@ def mergeSort(data, l, r, m):
         L[i] = data[l + i - 1]
         for j in range(n2):
             R[i] = data[m + j]
-    return
+    L[n1 + 1] = 1000000
+    R[n2 + 1] = 1000000
+    i = 1
+    j = 1
+    for k in range(l, r):
+        if L[i] <= R[j]:
+            data[k] = L[i]
+            i = i + 1
+        else:
+            j += 1
+    return data
 
 def merge(data, l, r):
     if l < r:
@@ -70,7 +81,7 @@ def merge(data, l, r):
         mergeSort(data, l, m)
         mergeSort(data, m + 1, r)
         merge(data, l, m, r)
-    return
+    return data
 
 
 
@@ -92,6 +103,6 @@ stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 #start = timeit.default_timer()
-#print(f"Merge sort: {mergeSort(data, 1, len(data) // 2, len(data) - 1)}")
+#print(f"Merge sort: {merge(data, 1, len(data) - 1)}")
 #stop = timeit.default_timer()
 #print("Time:", stop - start, "\n")
