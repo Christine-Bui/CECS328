@@ -92,7 +92,8 @@ rand_data1 = np.random.randint(1,101,1000)
 rand_data2 = np.random.randint(1,101,10000)
 
 ############## BUBBLE SORT ###############
-print("Bubble sort: ")
+print("\nBubble sort: ")
+print("==============================")
 start = timeit.default_timer()
 print(f"Ascending input:")
 bubbleSort(acc_data)
@@ -118,7 +119,8 @@ stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 ############ INSERTION SORT ##############
-print("Insertion sort: ")
+print("\nInsertion sort: ")
+print("==============================")
 start = timeit.default_timer()
 print(f"Ascending input:")
 insertionSort(acc_data)
@@ -144,7 +146,8 @@ stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 ############## QUICK SORT ################
-print("Quick sort: ")
+print("\nQuick sort: ")
+print("==============================")
 start = timeit.default_timer()
 print(f"Ascending input:")
 quickSort(acc_data, 1, len(acc_data) - 1)
