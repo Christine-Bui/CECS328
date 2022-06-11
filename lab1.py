@@ -55,14 +55,14 @@ def partition(data, s, e):
     return i + 1
 
 # EXTRA CREDIT
-def mergeSort(data, l, r, m):
-    n1 = m - l + 1
+def merge(data, l, m, r):
+    n1 = m - l 
     n2 = r - m
-    L = []
-    R = []
+    L = data[:m]
+    R = data[m:]
     for i in range(1, n1):
         L[i] = data[l + i - 1]
-        for j in range(n2):
+        for j in range(1, n2):
             R[i] = data[m + j]
     L[n1 + 1] = 1000000
     R[n2 + 1] = 1000000
@@ -76,12 +76,12 @@ def mergeSort(data, l, r, m):
             j += 1
     return data
 
-def merge(data, l, r):
+def mergeSort(data, l, r):
     if l < r:
         m = math.floor((l + r) / 2) 
-        merge(data, l, m)
-        merge(data, m + 1, r)
-        mergeSort(data, l, m, r)
+        mergeSort(data, l, m)
+        mergeSort(data, m + 1, r)
+        merge(data, l, m, r)
     return data
 
 
@@ -176,24 +176,24 @@ print("Time:", stop - start, "\n")
 # print("Merge Sort: ")
 # start = timeit.default_timer()
 # print(f"Ascending input:")
-# merge(acc_data, 1, len(acc_data) - 1)
+# mergeSort(acc_data, 1, len(acc_data) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
 # print(f"Descending input:")
-# merge(dec_data, 1, len(dec_data) - 1)
+# mergeSort(dec_data, 1, len(dec_data) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
 # print(f"Random input (1000 elements):")
-# merge(rand_data1, 1, len(rand_data1) - 1)
+# mergeSort(rand_data1, 1, len(rand_data1) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
 # print(f"Random input (10000 elements):")
-# merge(rand_data2, 1, len(rand_data2) - 1)
+# mergeSort(rand_data2, 1, len(rand_data2) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
