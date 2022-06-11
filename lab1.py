@@ -55,18 +55,18 @@ def partition(data, s, e):
 
 # EXTRA CREDIT
 def merge(data, l, m, r):
-    n1 = m - l + 1
+    n1 = m - l 
     n2 = r - m
-    L = [1] * (n1 + 1)
-    R = [1] * (n2 + 1)
-    
+    L = data[:m]
+    R = data[m:]
     for i in range(1, n1):
         L[i] = data[l + i - 1]
-    for j in range(1, n2):
-        R[j] = data[m + j]
+        for j in range(1, n2):
+            R[i] = data[m + j]
     L[n1 + 1] = inf
     R[n2 + 1] = inf
-    i = j = 1
+    i = 1
+    j = 1
     for k in range(l, r):
         if L[i] <= R[j]:
             data[k] = L[i]
@@ -85,116 +85,114 @@ def mergeSort(data, l, r):
     return data
 
 
-
 acc_data = list(range(1, 1001))
 dec_data = list(range(1, 10001)[::-1])
 rand_data1 = np.random.randint(1,101,1000)
 rand_data2 = np.random.randint(1,101,10000)
 
 ############## BUBBLE SORT ###############
-print("---------------------------------------------------")
-print("Bubble sort: \n")
+print("\nBubble sort: ")
+print("==============================")
 start = timeit.default_timer()
-print("Ascending input: ")
+print(f"Ascending input:")
 bubbleSort(acc_data)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Descending input: ")
+print(f"Descending input:")
 bubbleSort(dec_data)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (1000 elements): ")
+print(f"Random input (1000 elements):")
 bubbleSort(rand_data1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (10000 elements): ")
+print(f"Random input (10000 elements):")
 bubbleSort(rand_data2)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
-print("---------------------------------------------------")
 
-############# INSERTION SORT ##############
-print("Insertion sort: \n")
+############ INSERTION SORT ##############
+print("\nInsertion sort: ")
+print("==============================")
 start = timeit.default_timer()
-print("Ascending input: ")
+print(f"Ascending input:")
 insertionSort(acc_data)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Descending input: ")
+print(f"Descending input:")
 insertionSort(dec_data)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (1000 elements): ")
+print(f"Random input (1000 elements):")
 insertionSort(rand_data1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (10000 elements): ")
+print(f"Random input (10000 elements):")
 insertionSort(rand_data2)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
-print("---------------------------------------------------")
 
-############### QUICK SORT ################
-print("Quick sort: \n")
+############## QUICK SORT ################
+print("\nQuick sort: ")
+print("==============================")
 start = timeit.default_timer()
-print("Ascending input: ")
+print(f"Ascending input:")
 quickSort(acc_data, 1, len(acc_data) - 1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Descending input: ")
+print(f"Descending input:")
 quickSort(dec_data, 1, len(dec_data) - 1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (1000 elements): ")
+print(f"Random input (1000 elements):")
 quickSort(rand_data1, 1, len(rand_data1) - 1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
 
 start = timeit.default_timer()
-print("Random input (10000 elements): ")
+print(f"Random input (10000 elements):")
 quickSort(rand_data2, 1, len(rand_data2) - 1)
 stop = timeit.default_timer()
 print("Time:", stop - start, "\n")
-print("---------------------------------------------------")
 
 ############## EXTRA CREDIT ###############
 # print("Merge Sort: \n")
 # start = timeit.default_timer()
-# print("Ascending input: ")
+# print(f"Ascending input:")
 # mergeSort(acc_data, 1, len(acc_data) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
-# print("Descending input: ")
+# print(f"Descending input:")
 # mergeSort(dec_data, 1, len(dec_data) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
-# print("Random input (1000 elements): ")
-# merge(rand_data1, 1, len(rand_data1) - 1)
+# print(f"Random input (1000 elements):")
+# mergeSort(rand_data1, 1, len(rand_data1) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
 
 # start = timeit.default_timer()
-# print("Random input (10000 elements): ")
-# merge(rand_data2, 1, len(rand_data2) - 1)
+# print(f"Random input (10000 elements):")
+# mergeSort(rand_data2, 1, len(rand_data2) - 1)
 # stop = timeit.default_timer()
 # print("Time:", stop - start, "\n")
