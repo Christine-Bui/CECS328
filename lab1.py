@@ -9,7 +9,7 @@ import math
 import timeit
 from xml.etree.ElementTree import QName
 #from numpy import place
-# import numpy as np
+#import numpy as np
 
 
 def bubbleSort(data):
