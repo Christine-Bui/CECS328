@@ -6,38 +6,39 @@ Programming Assignment 2
 import math
 
 def minHeapify(a, i):
-    l = 2 * i + 1
-    r = 2 * i + 2
+    l = 2 * i 
+    r = 2 * i + 1
     
-    if l <= n and a[l] < a[i]:
+    if l <= len(a) and a[l] < a[i]:
         smallest = l
     else:
         smallest = i
-    if r <= n and a[r] < a[smallest]:
+    if r <= len(a) and a[r] < a[smallest]:
         smallest = r
     if smallest != i:
         a[i], a[smallest] = a[smallest], a[i] #swapping
         minHeapify(a, smallest)
         
 def buildMinHeap(a):
-    for i in range((math.floor(n/2) - 1), -1, - 1):
+    for i in range((math.floor(len(a)/2) - 1), -1, - 1):
         minHeapify(a,i)
         
 def heapSort(a):
     buildMinHeap(a)
-    for i in range(n, 0, - 2) :
+    for i in range(len(a), 0, - 2) :
         a[1], a[i] = a[i], a[1] 
         a.heap_size -= 1
         minHeapify(a, 1)
 
 def insert(a, user_input):
-    pass
+    a.append(user_input)
+    a.minHeapify(len(a) - 1)
     
 def pop(a, user_input):
-    pass
+    a.pop(user_input)
+    a.minHeapify(len(a) - 1)
 
-a = [1, 5, 7, 2, 3]          
-n = len(a)
+a = [1, 5, 7, 2, 3]
 
 print("""
       1. Insert an element
