@@ -6,51 +6,51 @@ Programming Assignment 2
 import math
 from tkinter import LEFT, RIGHT
 
-def heapify(a, i):
-    l = LEFT(i)
-    r = RIGHT(i)
+user_input = 0
+option = ''
+
+def minHeapify(a, i):
+    l = 2 * i + 1
+    r = 2 * i + 2
     
-    if l <= heap_size and a[l] > a[i]:
-        largest = l
+    if l <= heap_size and a[l] < a[i]:
+        smallest = l
     else:
-        largest = i
-    if r <= heap_size and a[r] > a[largest]:
-        largest = r
-    if largest != i:
-        a[i], a[largest] = a[largest], a[i] #swapping
-        heapify(a, largest)
+        smallest = i
+    if r <= heap_size and a[r] < a[smallest]:
+        smallest = r
+    if smallest != i:
+        a[i], a[smallest] = a[smallest], a[i] #swapping
+        minHeapify(a, smallest)
         
-def buildHeap(a):
-    heap_size = len(a)
-    for i in range(0, math.floor(len([a]/2)) - 1):
-        heapify(a,i)
+def buildMinHeap(a):
+    for i in range((math.floor(heap_size/2) - 1), -1, - 1):
+        minHeapify(a,i)
         
 def heapSort(a):
-    buildHeap(a)
-    for i in range(0, len(a) - 2) :
+    buildMinHeap(a)
+    for i in range(0, heap_size - 2) :
         a[1], a[i] = a[i], a[1] 
         heap_size -= 1
-        heapify(a, 1)
+        minHeapify(a, 1)
 
-def insert():
+def insert(a, user_input):
+    pass
+    
+def pop(a, user_input):
     pass
 
-def pop():
-    pass
-
-def quit():
-    exit()
-
-
-
-def menu():
-    options = {
-        0: 'insert',
-        1: 'pop',
-        2: 'buildHeap',
-        3: 'heapSort',
-        4: 'quit'
-    }
-
-a = [1, 5, 7, 2, 3]          
-heap_size = len(a)
+while option != 'quit':
+    if option == "insert":
+        insert()
+    elif option == 'pop':
+        pop()
+    elif option == 'build heap':
+        buildMinHeap(user_input)
+    elif option == 'heap sort':
+        heapSort(user_input)
+    else: 
+        quit()
+        
+user_input = [1, 5, 7, 2, 3]          
+heap_size = len(user_input)
