@@ -9,25 +9,25 @@ def minHeapify(a, i):
     l = 2 * i + 1
     r = 2 * i + 2
     
-    if l <= heap_size and a[l] < a[i]:
+    if l <= n and a[l] < a[i]:
         smallest = l
     else:
         smallest = i
-    if r <= heap_size and a[r] < a[smallest]:
+    if r <= n and a[r] < a[smallest]:
         smallest = r
     if smallest != i:
         a[i], a[smallest] = a[smallest], a[i] #swapping
         minHeapify(a, smallest)
         
 def buildMinHeap(a):
-    for i in range((math.floor(heap_size/2) - 1), -1, - 1):
+    for i in range((math.floor(n/2) - 1), -1, - 1):
         minHeapify(a,i)
         
 def heapSort(a):
     buildMinHeap(a)
-    for i in range(0, heap_size - 2) :
+    for i in range(n, 0, - 2) :
         a[1], a[i] = a[i], a[1] 
-        heap_size -= 1
+        a.heap_size -= 1
         minHeapify(a, 1)
 
 def insert(a, user_input):
@@ -37,7 +37,8 @@ def pop(a, user_input):
     pass
 
 a = [1, 5, 7, 2, 3]          
-heap_size = len(a)
+n = len(a)
+
 print("""
       1. Insert an element
       2. Remove an element
