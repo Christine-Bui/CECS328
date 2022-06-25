@@ -46,14 +46,14 @@ print("""
       4. Sort heap
       5. Quit
       """)
-option = input("Input an option: ")
+option = int(input("Input an option: "))
 
 while option != 5:
     if option == 1:
-        user_input = input("Enter an element to insert into heap: ")
+        user_input = int(input("Enter an element to insert into heap: "))
         insert(a, user_input)
     elif option == 2:
-        user_input = input("Enter an element to remove from heap: ")
+        user_input = int(input("Enter an node to remove from heap: "))
         pop(a, user_input)
     elif option == 3:
         buildMinHeap(a)
