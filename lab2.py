@@ -4,10 +4,6 @@ Partner: Matthew Eskridge
 Programming Assignment 2
 '''
 import math
-from tkinter import LEFT, RIGHT
-
-user_input = 0
-option = ''
 
 def minHeapify(a, i):
     l = 2 * i + 1
@@ -40,17 +36,29 @@ def insert(a, user_input):
 def pop(a, user_input):
     pass
 
-while option != 'quit':
-    if option == "insert":
-        insert()
-    elif option == 'pop':
-        pop()
-    elif option == 'build heap':
-        buildMinHeap(user_input)
-    elif option == 'heap sort':
-        heapSort(user_input)
-    else: 
+a = [1, 5, 7, 2, 3]          
+heap_size = len(a)
+print("""
+      1. Insert an element
+      2. Remove an element
+      3. Build heap
+      4. Sort heap
+      5. Quit
+      """)
+option = input("Input an option: ")
+
+while option != 5:
+    if option == 1:
+        user_input = input("Enter an element to insert into heap: ")
+        insert(a, user_input)
+    elif option == 2:
+        user_input = input("Enter an element to remove from heap: ")
+        pop(a, user_input)
+    elif option == 3:
+        buildMinHeap(a)
+    elif option == 4:
+        heapSort(a)
+    elif option == 5: 
         quit()
-        
-user_input = [1, 5, 7, 2, 3]          
-heap_size = len(user_input)
+    else:
+        print("Re-enter a valid option. ")
