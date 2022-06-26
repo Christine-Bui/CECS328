@@ -5,12 +5,11 @@ Programming Assignment 2
 '''
 import math
 import random
-import time
-import heapq
+import timeit
 
 heap_size = 0
 
-def minHeapify(a, i):
+def heapify(a, i):
     l = 2 * i 
     r = 2 * i + 1
     
@@ -22,23 +21,44 @@ def minHeapify(a, i):
         smallest = r
     if smallest != i:
         a[i], a[smallest] = a[smallest], a[i] #swapping
-        minHeapify(a, smallest)
+        heapify(a, smallest)
+
+def quickSort(data, s, e):
+    if s > e:
+        part = partition(data, s, e)
+        quickSort(data, s, part - 1)
+        quickSort(data, part + 1, e)
+    return data
+
+def partition(data, s, e):
+    x = data[e]
+    i = s - 1
+    for j in range(s, e - 1):
+        if data[j] <= x:
+            i += 1
+            placeholder = data[i]
+            data[i] = data[j]
+            data[j] = placeholder
+    placeholder = data[i + 1]
+    data[i + 1] = data[e]
+    data[e] = placeholder
+    return i + 1
 
 ###############################################################    
 
 def insert(a, user_input):
     a.append(user_input)
     for i in range((math.floor(len(a)/2) - 1), -1, - 1):
-        minHeapify(a, i)
+        heapify(a, i)
     
 def pop(a, user_input):
     a.pop(user_input)
     for i in range((math.floor(len(a)/2) - 1), -1, - 1):
-        minHeapify(a, i)
+        heapify(a, i)
 
 def buildMinHeap(a):
     for i in range((math.floor(len(a)/2) - 1), -1, - 1):
-        minHeapify(a,i)
+        heapify(a,i)
     return a
 
 def heapSort(a):
@@ -48,7 +68,7 @@ def heapSort(a):
         a[1], a[i] = a[i], a[1] 
         global heap_size
         heap_size -= 1
-        minHeapify(a, 1)
+        heapify(a, 1)
 
 ############################################################### 
 
@@ -62,7 +82,7 @@ print("""
       3. Insert an element
       4. Remove an element
       5. Sort heap
-      6. Enter length n
+      6. Generate and sort random array of length n
       7. Quit
       """)
 option = int(input("Input an option: "))
@@ -106,17 +126,19 @@ while option != 7:
         for i in range(n):
             a.append(random.randint(-1000, 1000))
 
-        start_time1 = time.time()
+        start1 = timeit.default_timer()
         heapSort(a)
-        time1 = time.time() - start_time1
+        end1 = timeit.default_timer()
+        time1 = end1 - start1
 
-        start_time2 = time.time()
-        heapq.heappush(a, random.randint(-1000, 1000))
-        time2 = time.time() - start_time2
+        start2 = timeit.default_timer()
+        quickSort(a, 1, len(a) - 1)
+        end2 = timeit.default_timer()
+        time2 = end2 - start2
 
-        print("Our heap sorting:")
+        print("Heap sort:")
         print(time1)
-        print("Standard library sorting:")
+        print("Quick sort:")
         print(time2)
 
 
@@ -126,7 +148,7 @@ while option != 7:
       3. Insert an element
       4. Remove an element
       5. Sort heap
-      6. Enter length n
+      6. Generate and sort random array of length n
       7. Quit
       """)
     option = int(input("Input an option: "))
