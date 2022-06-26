@@ -11,11 +11,11 @@ def minHeapify(a, i):
     l = 2 * i 
     r = 2 * i + 1
     
-    if l <= len(a) and a[l] < a[i]:
+    if l < len(a) and a[l] < a[i]:
         smallest = l
     else:
         smallest = i
-    if r <= len(a) and a[r] < a[smallest]:
+    if r < len(a) and a[r] < a[smallest]:
         smallest = r
     if smallest != i:
         a[i], a[smallest] = a[smallest], a[i] #swapping
@@ -25,14 +25,15 @@ def minHeapify(a, i):
 
 def insert(a, user_input):
     a.append(user_input)
-    a.heapify(len(a) - 1)
+    for i in range((math.floor(len(a)/2) - 1), -1, - 1):
+        minHeapify(a, i)
     
 def pop(a, user_input):
     a.pop(user_input)
-    a.heapify(len(a) - 1)
+    for i in range((math.floor(len(a)/2) - 1), -1, - 1):
+        minHeapify(a, i)
 
 def buildMinHeap(a):
-    heap_size = len(a)
     for i in range((math.floor(len(a)/2) - 1), -1, - 1):
         minHeapify(a,i)
     return a
@@ -98,9 +99,6 @@ while option != 7:
 
     elif option == 6:
         print("FIX ME")
-
-    else:
-        print("\nRe-enter a valid option. ")
 
     print("""
       1. Create an empty min heap
