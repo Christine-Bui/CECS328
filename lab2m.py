@@ -40,7 +40,7 @@ def buildMinHeap(a):
 
 def heapSort(a):
     buildMinHeap(a)
-    for i in range(len(a)-1, 1, - 1) :
+    for i in range(len(a)-2, 0, -1) :
         print("i:", i, "\n")
         a[1], a[i] = a[i], a[1] 
         global heap_size
