@@ -4,6 +4,9 @@ Partner: Matthew Eskridge
 Programming Assignment 2
 '''
 import math
+import random
+import time
+import heapq
 
 heap_size = 0
 
@@ -98,7 +101,24 @@ while option != 7:
         print(a, "\n")
 
     elif option == 6:
-        print("FIX ME")
+        n = int(input("Enter a number as length for array: "))
+        a = []
+        for i in range(n):
+            a.append(random.randint(-1000, 1000))
+
+        start_time1 = time.time()
+        heapSort(a)
+        time1 = time.time() - start_time1
+
+        start_time2 = time.time()
+        heapq.heappush(a, random.randint(-1000, 1000))
+        time2 = time.time() - start_time2
+
+        print("Our heap sorting:")
+        print(time1)
+        print("Standard library sorting:")
+        print(time2)
+
 
     print("""
       1. Create an empty min heap
